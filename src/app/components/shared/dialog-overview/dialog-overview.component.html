@@ -1,0 +1,8 @@
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Buscar monitor</mat-label>
+    <input matInput [formControl]="monitorFilter" />
+  </mat-form-field>
+  <button mat-button (click)="onFilterMonitor()">Buscar</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+</form>
