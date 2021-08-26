@@ -12,6 +12,14 @@ mat-toolbar {
   background-size: cover;
 }
 
-.p-2{
-    padding:20px;
+.p-2 {
+  padding: 20px;
+}
+
+.mat-card-actions {
+  margin-bottom: 0px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
 }
