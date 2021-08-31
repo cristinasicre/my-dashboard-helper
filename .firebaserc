@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-dashboard-helper": {
+      "hosting": {
+        "my-dashboard-helper": [
+          "my-dashboard-helper"
+        ]
+      }
+    }
+  }
+}

@@ -1,4 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-toolbar {
+  background-color: #ffd600 !important;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px !important;
+}
+
+.header-image.check-mk {
+  background-image: url("https://cmk.vueling.com/checkmk_m/check_mk/themes/modern-dark/images/mk-logo.png");
+  background-size: cover;
+}
+
+.p-2 {
+  padding: 20px !important;
+}
+
+.mat-card-actions{
+  margin-bottom: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+.mat-card-content {
+  margin-bottom: 0px !important;
+  display: grid !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  justify-content: space-between !important;
+}
