@@ -13,9 +13,13 @@ export const URLs = {
     paramsUrlEnd: '%26view_name%3Dsearchsvc',
   },
   KIBANA: {
-    baseUrl: 'https://827fce13f4e9474ba76b63fc6dc814da.eu-west-1.aws.found.io:9243/spaces/space_selector',
+    baseUrl:
+      'https://827fce13f4e9474ba76b63fc6dc814da.eu-west-1.aws.found.io:9243/spaces/space_selector',
   },
   GRAFANA: {
     baseUrl: 'https://grafana.vueling.com/',
+  },
+  HELPDESK: {
+    baseUrl: 'https://jira.vueling.com/servicedesk/customer/portals',
   },
 };

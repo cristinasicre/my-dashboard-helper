@@ -26,7 +26,10 @@ mat-toolbar {
   background-image: url("assets/settings.png");
   background-size: cover;
 }
-
+.header-image.utils {
+  background-image: url("assets/push-pin.png");
+  background-size: cover;
+}
 .p-2 {
   padding: 20px !important;
 }
