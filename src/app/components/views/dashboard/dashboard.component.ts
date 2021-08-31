@@ -19,6 +19,12 @@ export class DashboardComponent {
       case 'check_mk_5':
         this.openSearch(URLs.CHECK_MK_5);
         break;
+        case 'kibana':
+          this.redirectTo(URLs.KIBANA.baseUrl);
+          break;
+        case 'grafana':
+          this.redirectTo(URLs.GRAFANA.baseUrl);
+          break;
     }
   }
 
