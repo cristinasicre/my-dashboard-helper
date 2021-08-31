@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth } from '@angular/fire/auth';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogDataComponent } from './components/shared/dialog-data/dialog-data.component';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -12,20 +14,18 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     const user = this.authService.getCurrentUser();
     user.onAuthStateChanged((response) => {
       if (user.currentUser) {
-        console.log('User', user);
         this.router.navigate(['dashboard']);
       } else {
         this.router.navigate(['login']);
-        console.log('No hay usuario autenticado');
       }
     });
-    
   }
 }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+import { DialogDataComponent } from '../../shared/dialog-data/dialog-data.component';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +11,27 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    user: new FormControl(''),
-    password: new FormControl(''),
+    user: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    public dialog: MatDialog,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    
+    this.cdr.markForCheck();
   }
-
   onLogin() {
-    this.authService.login(
-      this.loginForm.get('user')?.value,
-      this.loginForm.get('password')?.value
-    );
-
-    const user = this.authService.getCurrentUser();
-    
-    console.log(user);
+    if (!this.loginForm.invalid) {
+      this.authService.login(
+        this.loginForm.get('user')?.value,
+        this.loginForm.get('password')?.value
+      );
+      const user = this.authService.getCurrentUser();
+    } else {
+      this.dialog.open(DialogDataComponent);
+    }
   }
 }

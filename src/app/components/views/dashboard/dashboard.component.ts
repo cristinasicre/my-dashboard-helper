@@ -1,48 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { URLs } from 'src/environments/varibles';
 import { DialogOverviewComponent } from '../../shared/dialog-overview/dialog-overview.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-
   constructor(public dialog: MatDialog) {}
 
   openURL(urlType: string) {
     switch (urlType) {
       case 'check_mk_6':
-        const dialogRef = this.dialog.open(DialogOverviewComponent, {
-          width: '250px',
-          data: { monitor: '' },
-        });
-
-        dialogRef.afterClosed().subscribe((result) => {
-          let url =
-            'https://cmk.vueling.com/checkmk_m/check_mk/index.py?start_url=%2Fcheckmk_m%2Fcheck_mk';
-
-          if (result) {
-            if (result.monitor != '') {
-              url +=
-                '%2Fview.py%3Ffilled_in%3Dfilter%26service_regex%3D' +
-                result.monitor +
-                '%26view_name%3Dsearchsvc';
-            } else {
-              url += '%2Fdashboard.py';
-            }
-            window.open(url);
-          }
-        });
+        this.openSearch(URLs.CHECK_MK_6);
         break;
       case 'check_mk_5':
-
-      
-        window.open(
-          'https://checkmklb.vueling.com/master/check_mk/index.py?start_url=%2Fmaster%2Fcheck_mk%2Fdashboard.py'
-        );
+        this.openSearch(URLs.CHECK_MK_5);
         break;
     }
+  }
+
+  redirectTo(url: string) {
+    window.open(url);
+  }
+
+  openSearch(url: any) {
+    const dialogRef = this.dialog.open(DialogOverviewComponent, {
+      width: '250px',
+      data: { monitor: '' },
+    });
+    let urlToRedirect = '';
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        if (result.monitor != '') {
+          urlToRedirect =
+            url.baseUrl + url.paramsUrl + result.monitor + url.paramsUrlEnd;
+        } else {
+          urlToRedirect = url.baseUrl + '%2Fdashboard.py';
+        }
+        this.redirectTo(urlToRedirect);
+      }
+    });
   }
 }

@@ -4,10 +4,11 @@ import { DialogOverviewComponent } from './dialog-overview/dialog-overview.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { DialogDataComponent } from './dialog-data/dialog-data.component';
 
 @NgModule({
-  declarations: [DialogOverviewComponent, NavbarComponent],
+  declarations: [DialogOverviewComponent, NavbarComponent, DialogDataComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
-  exports: [DialogOverviewComponent, NavbarComponent],
+  exports: [DialogOverviewComponent, NavbarComponent,DialogDataComponent],
 })
 export class SharedModule {}
