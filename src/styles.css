@@ -22,6 +22,10 @@ mat-toolbar {
   background-image: url("https://cmk.vueling.com/checkmk_m/check_mk/themes/modern-dark/images/mk-logo.png");
   background-size: cover;
 }
+.header-image.tools {
+  background-image: url("assets/settings.png");
+  background-size: cover;
+}
 
 .p-2 {
   padding: 20px !important;

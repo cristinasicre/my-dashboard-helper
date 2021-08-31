@@ -12,3 +12,16 @@
     </mat-card-actions>
   </mat-card>
 </div>
+<div class="p-2">
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image tools"></div>
+      <mat-card-title>Herramientas</mat-card-title>
+      <mat-card-subtitle>logs</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button (click)="openURL('kibana')"><img src="../../../../assets/elastic-kibana-logo.png" width="20"> Kibana</button>
+      <button mat-button (click)="openURL('grafana')"><img src="../../../../assets/grafana_logo.png" width="20"> Grafana</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
