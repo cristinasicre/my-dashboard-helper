@@ -1,0 +1,17 @@
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image utils"></div>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+      <div class="msg-no-items" *ngIf="bookmarks.length === 0">No tienes ningún marcador</div>
+    <button
+      mat-button
+      *ngFor="let bookmark of bookmarks"
+      (click)="openURL(bookmark.name!, bookmark.url!)"
+    >
+      {{ bookmark.name }}
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -19,13 +19,14 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const user = this.authService.getCurrentUser();
-    user.onAuthStateChanged((response) => {
-      if (user.currentUser) {
-        this.router.navigate(['dashboard']);
-      } else {
-        this.router.navigate(['login']);
-      }
+    this.authService.getCurrentUser().then((user) => {
+      user.onAuthStateChanged((response) => {
+        if (user.currentUser) {
+          this.router.navigate(['dashboard']);
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
     });
   }
 }

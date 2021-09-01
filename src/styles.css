@@ -12,10 +12,8 @@ body {
 mat-toolbar {
   background-color: #ffd600 !important;
 }
-
-.button-row button,
-.button-row a {
-  margin-right: 8px !important;
+.mat-card-actions .mat-button, .mat-card-actions .mat-raised-button, .mat-card-actions .mat-stroked-button {
+  margin: 0 0px !important;
 }
 
 .header-image.check-mk {
@@ -40,20 +38,7 @@ mat-toolbar {
 .content > mat-card {
   width: 200px !important;
 }
-.mat-card-actions{
-  margin-bottom: 0px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-}
-.mat-card-content {
-  margin-bottom: 0px !important;
-  display: grid !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-}
+
 
 .mat-toolbar-row, .mat-toolbar-single-row {
   justify-content: space-between !important;

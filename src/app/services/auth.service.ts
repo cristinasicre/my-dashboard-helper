@@ -33,15 +33,13 @@ export class AuthService {
 
   logout() {
     signOut(this.auth)
-      .then(() => {
-        console.log('Sign-out successful');
-      })
+      .then(() => {})
       .catch((error) => {
         alert(error);
       });
   }
 
-  getCurrentUser() {
+  async getCurrentUser() {
     return this.auth;
   }
 }

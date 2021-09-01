@@ -3,27 +3,47 @@ import { MatDialog } from '@angular/material/dialog';
 import { URLs } from 'src/environments/varibles';
 import { DialogOverviewComponent } from '../../shared/dialog-overview/dialog-overview.component';
 import { getDatabase, ref, onValue } from 'firebase/database';
+import { AuthService } from 'src/app/services/auth.service';
+import { Bookmark } from 'src/app/models/data';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
- 
-
-  constructor(public dialog: MatDialog) {}
-
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+  bookmarks: Bookmark[] = [];
   ngOnInit() {
-    const db = getDatabase();
-    const starCountRef = ref(db, '/bookmarks' );
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
-     // updateStarCount(postElement, data);
+    this.authService.getCurrentUser().then((user) => {
+      user.onAuthStateChanged((response) => {
+        if (user.currentUser) {
+          const uid = user.currentUser?.uid;
+          const db = getDatabase();
+          const starCountRef = ref(db, uid);
+          onValue(starCountRef, (snapshot) => {
+            snapshot.forEach((sn) => {
+              sn.forEach((sn) => {
+                let r: Bookmark = {
+                  name: sn.ref!.key!,
+                  url: sn.val(),
+                };
+                this.bookmarks.push(r);
+              });
+            });
+          });
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
     });
   }
 
-  openURL(urlType: string) {
+  openURL(urlType: string, redirectTo?: string) {
     switch (urlType) {
       case 'check_mk_6':
         this.openSearch(URLs.CHECK_MK_6);
@@ -39,6 +59,9 @@ export class DashboardComponent implements OnInit {
         break;
       case 'helpDesk':
         this.redirectTo(URLs.HELPDESK.baseUrl);
+        break;
+      default:
+        this.redirectTo(redirectTo!);
         break;
     }
   }
