@@ -2,14 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { URLs } from 'src/environments/varibles';
 import { DialogOverviewComponent } from '../../shared/dialog-overview/dialog-overview.component';
-
+import { getDatabase, ref, onValue } from 'firebase/database';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+ 
+
   constructor(public dialog: MatDialog) {}
+
+  ngOnInit() {
+    const db = getDatabase();
+    const starCountRef = ref(db, '/bookmarks' );
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+     // updateStarCount(postElement, data);
+    });
+  }
 
   openURL(urlType: string) {
     switch (urlType) {

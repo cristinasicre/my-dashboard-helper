@@ -14,6 +14,7 @@ import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { SharedModule } from './components/shared/shared.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -29,6 +30,7 @@ import { SharedModule } from './components/shared/shared.module';
     DashboardModule,
     LoginModule,
     SharedModule,
+    FlexLayoutModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
   ],

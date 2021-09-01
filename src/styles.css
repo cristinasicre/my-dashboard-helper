@@ -33,7 +33,13 @@ mat-toolbar {
 .p-2 {
   padding: 20px !important;
 }
+.content {
+  padding: 16px !important;
+}
 
+.content > mat-card {
+  width: 200px !important;
+}
 .mat-card-actions{
   margin-bottom: 0px !important;
   display: flex !important;
