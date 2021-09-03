@@ -24,9 +24,16 @@ mat-toolbar {
   background-image: url("assets/settings.png");
   background-size: cover;
 }
+
+.header-image.utils:hover {
+  background-image: url("assets/add.png");
+  background-size: cover;
+}
+
 .header-image.utils {
   background-image: url("assets/push-pin.png");
   background-size: cover;
+  transition-duration: 0.5s;
 }
 .p-2 {
   padding: 20px !important;

@@ -1,0 +1,12 @@
+<form [formGroup]="bookmarkForm">
+  <h3>Añadir Marcador</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" required/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Url</mat-label>
+    <input matInput formControlName="url" required/>
+  </mat-form-field>
+   <button mat-raised-button color="primary" (click)="addMarker()">Añadir</button>
+</form>

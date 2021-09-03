@@ -11,12 +11,15 @@ import {
   browserSessionPersistence,
   signOut,
 } from 'firebase/auth';
+import { getDatabase, ref, set } from 'firebase/database';
+import { Bookmark } from '../models/data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   auth = getAuth();
+  db = getDatabase();
 
   constructor() {}
 
@@ -41,5 +44,11 @@ export class AuthService {
 
   async getCurrentUser() {
     return this.auth;
+  }
+
+  addBookmark(data: Bookmark, uid: string) {
+    const name = data.name;
+    const url = data.url;
+    set(ref(this.db, uid + '/bookmarks'), [{ name: url }]);
   }
 }

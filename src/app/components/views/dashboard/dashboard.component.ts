@@ -18,13 +18,14 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) {}
   bookmarks: Bookmark[] = [];
+  uid: string = '';
   ngOnInit() {
     this.authService.getCurrentUser().then((user) => {
       user.onAuthStateChanged((response) => {
         if (user.currentUser) {
-          const uid = user.currentUser?.uid;
+          this.uid = user.currentUser?.uid;
           const db = getDatabase();
-          const starCountRef = ref(db, uid);
+          const starCountRef = ref(db, this.uid);
           onValue(starCountRef, (snapshot) => {
             snapshot.forEach((sn) => {
               sn.forEach((sn) => {
@@ -32,7 +33,14 @@ export class DashboardComponent implements OnInit {
                   name: sn.ref!.key!,
                   url: sn.val(),
                 };
-                this.bookmarks.push(r);
+
+                if (
+                  this.bookmarks.find((b) => {
+                    b.name == r.name;
+                  }) === undefined
+                ) {
+                  this.bookmarks.push(r);
+                }
               });
             });
           });
@@ -87,5 +95,10 @@ export class DashboardComponent implements OnInit {
         this.redirectTo(urlToRedirect);
       }
     });
+  }
+
+  addBookmark(data: Bookmark) {
+
+    this.authService.addBookmark(data, this.uid);
   }
 }

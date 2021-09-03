@@ -43,6 +43,7 @@
         [subtitle]="'Enlaces de interes'"
         [bookmarks]="bookmarks"
         (action)="openURL($event.name!, $event.url!)"
+        (addBookmark)="addBookmark($event)"
       ></app-card-extended>
     </div>
   </div>

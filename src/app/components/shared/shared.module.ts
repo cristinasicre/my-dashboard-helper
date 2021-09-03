@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { DialogDataComponent } from './dialog-data/dialog-data.component';
 import { CardExtendedComponent } from './card-extended/card-extended.component';
+import { DialogBookmarksComponent } from './dialog-bookmarks/dialog-bookmarks.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { CardExtendedComponent } from './card-extended/card-extended.component';
     NavbarComponent,
     DialogDataComponent,
     CardExtendedComponent,
+    DialogBookmarksComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [
@@ -20,6 +22,7 @@ import { CardExtendedComponent } from './card-extended/card-extended.component';
     NavbarComponent,
     DialogDataComponent,
     CardExtendedComponent,
+    MaterialModule,
   ],
 })
 export class SharedModule {}
