@@ -7,8 +7,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
-
-
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatChipsModule} from '@angular/material/chips';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 @NgModule({
   declarations: [],
   imports: [
@@ -19,7 +20,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule,
+    MatChipsModule,
+    ClipboardModule
   ], 
   exports: [
     MatToolbarModule,
@@ -28,7 +32,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule,
+    MatChipsModule,
+    ClipboardModule
   ]
 })
 export class MaterialModule { }

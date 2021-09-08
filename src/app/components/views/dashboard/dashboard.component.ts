@@ -6,6 +6,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { AuthService } from 'src/app/services/auth.service';
 import { Bookmark } from 'src/app/models/data';
 import { Router } from '@angular/router';
+import { DialogMultiComponent } from '../../shared/dialog-multi/dialog-multi.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -93,12 +94,18 @@ export class DashboardComponent implements OnInit {
           urlToRedirect = url.baseUrl + '%2Fdashboard.py';
         }
         this.redirectTo(urlToRedirect);
+        this.openAfterSearch();
       }
+    });
+  }
+  openAfterSearch() {
+    const dialogRef = this.dialog.open(DialogMultiComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      // console.log(`Dialog result: ${result}`);
     });
   }
 
   addBookmark(data: Bookmark) {
-
     this.authService.addBookmark(data, this.uid);
   }
 }

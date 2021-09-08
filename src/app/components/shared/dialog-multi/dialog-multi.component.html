@@ -1,0 +1,28 @@
+<h2 mat-dialog-title><mat-icon>tips_and_updates</mat-icon> ¿Todo correcto?</h2>
+<mat-dialog-content class="mat-typography">
+  <div *ngFor="let msg of resolutionMessages">
+    <h4>
+      <b>{{ msg.title }}</b
+      ><app-copy-button
+        align="end"
+        [copyToClipboard]="msg.textToClipboard"
+      ></app-copy-button>
+    </h4>
+    <p><b>Causa: </b> {{ msg.cause }}</p>
+    <p><b>Problema: </b> {{ msg.cause }}</p>
+    <p><b>Solución: </b> {{ msg.solution }}</p>
+    <p>
+      <mat-chip-list aria-label="Typology">
+        <mat-chip>{{ msg.resolution }}</mat-chip>
+        <mat-chip>{{ msg.error_type }}</mat-chip>
+        <mat-chip color="primary" selected>{{ msg.impact }}</mat-chip>
+      </mat-chip-list>
+    </p>
+    <hr />
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <!-- <button mat-button mat-dialog-close>Cancel</button> -->
+  <a mat-button href="mailto:" target="_blank" align="start"> <mat-icon>email</mat-icon> Enviar correo</a>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cerrar</button>
+</mat-dialog-actions>

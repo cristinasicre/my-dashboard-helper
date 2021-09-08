@@ -7,6 +7,8 @@ import { MaterialModule } from '../material/material.module';
 import { DialogDataComponent } from './dialog-data/dialog-data.component';
 import { CardExtendedComponent } from './card-extended/card-extended.component';
 import { DialogBookmarksComponent } from './dialog-bookmarks/dialog-bookmarks.component';
+import { DialogMultiComponent } from './dialog-multi/dialog-multi.component';
+import { CopyButtonComponent } from './copy-button/copy-button.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { DialogBookmarksComponent } from './dialog-bookmarks/dialog-bookmarks.co
     DialogDataComponent,
     CardExtendedComponent,
     DialogBookmarksComponent,
+    DialogMultiComponent,
+    CopyButtonComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [
@@ -23,6 +27,8 @@ import { DialogBookmarksComponent } from './dialog-bookmarks/dialog-bookmarks.co
     DialogDataComponent,
     CardExtendedComponent,
     MaterialModule,
+    DialogMultiComponent,
+    CopyButtonComponent,
   ],
 })
 export class SharedModule {}
