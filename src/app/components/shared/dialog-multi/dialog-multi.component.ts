@@ -8,6 +8,7 @@ import { RESOLUTION } from 'src/app/global/resolution-messages';
 })
 export class DialogMultiComponent implements OnInit {
   resolutionMessages = RESOLUTION;
+  subjectDate = new Date();
   constructor() {}
 
   ngOnInit(): void {}
