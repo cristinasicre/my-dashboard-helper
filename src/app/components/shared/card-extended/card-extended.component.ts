@@ -23,12 +23,12 @@ export class CardExtendedComponent implements OnInit {
   }
 
   addMarker(){
-    const dialogRef = this.dialog.open(DialogBookmarksComponent, {
-      width: '250px'
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.addBookmark.emit(result);
-    });
+    // const dialogRef = this.dialog.open(DialogBookmarksComponent, {
+    //   width: '250px'
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   this.addBookmark.emit(result);
+    // });
   }
 
   

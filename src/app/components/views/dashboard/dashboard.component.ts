@@ -38,7 +38,9 @@ export class DashboardComponent implements OnInit {
                 if (
                   this.bookmarks.find((b) => {
                     b.name == r.name;
-                  }) === undefined
+                  }) === undefined || this.bookmarks.find((b) => {
+                    b.name == r.name;
+                  }) === false
                 ) {
                   this.bookmarks.push(r);
                 }
@@ -57,9 +59,9 @@ export class DashboardComponent implements OnInit {
       case 'check_mk_6':
         this.openSearch(URLs.CHECK_MK_6);
         break;
-      case 'check_mk_5':
-        this.openSearch(URLs.CHECK_MK_5);
-        break;
+      // case 'check_mk_5':
+      //   this.openSearch(URLs.CHECK_MK_5);
+      //   break;
       case 'kibana':
         this.redirectTo(URLs.KIBANA.baseUrl);
         break;
@@ -94,7 +96,7 @@ export class DashboardComponent implements OnInit {
           urlToRedirect = url.baseUrl + '%2Fdashboard.py';
         }
         this.redirectTo(urlToRedirect);
-        this.openAfterSearch();
+       // this.openAfterSearch();
       }
     });
   }
@@ -106,6 +108,6 @@ export class DashboardComponent implements OnInit {
   }
 
   addBookmark(data: Bookmark) {
-    this.authService.addBookmark(data, this.uid);
+   // this.authService.addBookmark(data, this.uid);
   }
 }
